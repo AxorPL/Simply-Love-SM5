@@ -185,6 +185,15 @@ local Overrides = {
 		end
 	},
 	-------------------------------------------------------------------------
+	JudgmentPosition = {
+		Choices = function()
+			local first = -50
+			local last = 200
+			local step = 5
+			return stringify(range(first, last, step), "%gpx")
+		end
+	},
+	-------------------------------------------------------------------------
 	HoldJudgment = {
 		LayoutType = "ShowOneInRow",
 		ExportOnChange = true,

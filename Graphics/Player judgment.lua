@@ -66,13 +66,13 @@ return Def.ActorFrame{
 			-- animate(false) is needed so that this Sprite does not automatically
 			-- animate its way through all available frames; we want to control which
 			-- frame displays based on what judgment the player earns
-			self:animate(false):visible(false):y(string.sub(mods.JudgmentPosition, 1, string.len(mods.JudgmentPosition) - 2))
+			self:animate(false):visible(false)
+			self:y(tonumber(string.sub(mods.JudgmentPosition, 1, string.len(mods.JudgmentPosition) - 1)) * SCREEN_HEIGHT / 100)
 
 			-- if we are on ScreenEdit, judgment graphic is always "Love"
 			-- because ScreenEdit is a mess and not worth bothering with.
 			if string.match(tostring(SCREENMAN:GetTopScreen()), "ScreenEdit") then
 				self:Load( THEME:GetPathG("", "_judgments/ITG/Love") )
-
 			else
 				self:Load( THEME:GetPathG("", "_judgments/" .. mode .. "/" .. file_to_load) )
 			end

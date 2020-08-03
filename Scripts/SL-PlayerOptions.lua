@@ -187,10 +187,10 @@ local Overrides = {
 	-------------------------------------------------------------------------
 	JudgmentPosition = {
 		Choices = function()
-			local first = -50
-			local last = 200
-			local step = 5
-			return stringify(range(first, last, step), "%gpx")
+			local first = -20
+			local last = 50
+			local step = 1
+			return stringify(range(first, last, step), "%g%%")
 		end
 	},
 	-------------------------------------------------------------------------

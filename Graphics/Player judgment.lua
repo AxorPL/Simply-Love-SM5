@@ -67,7 +67,15 @@ return Def.ActorFrame{
 			-- animate its way through all available frames; we want to control which
 			-- frame displays based on what judgment the player earns
 			self:animate(false):visible(false)
-			self:y(tonumber(string.sub(mods.JudgmentPosition, 1, string.len(mods.JudgmentPosition) - 1)) * SCREEN_HEIGHT / 100)
+
+			-- Judgment Position
+			local jp_value = tonumber(string.sub(mods.JudgmentPosition, 1, string.len(mods.JudgmentPosition) - 1))
+			if GAMESTATE:GetPlayerState(player):GetPlayerOptions("ModsLevel_Current"):UsingReverse() then
+				jp_value = math.min(jp_value, 40)
+			else
+				jp_value = math.max(jp_value, -20)
+			end
+			self:y(jp_value * SCREEN_HEIGHT / 100)
 
 			-- if we are on ScreenEdit, judgment graphic is always "Love"
 			-- because ScreenEdit is a mess and not worth bothering with.
